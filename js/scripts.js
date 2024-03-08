@@ -143,13 +143,13 @@ function haceventacasa() {
 
 }
 
-// choclo de funciones de final
+// Funciones de final
 
 function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona) {
 
     alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.")
 
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + " " + "Se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + "," + " " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
 
 }
 
@@ -157,6 +157,8 @@ function ending2post(personaje, tamanoterreno, persona) {
 
     alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "sin embargo, decidio no comprar una casa prefabricada, sino que armar la suya propia.")
     
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + " " + "Se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + "," + " " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
 
 }
+
+// Milton te aviso que las funciones de ending se llevaron parte de mi sanidad mental

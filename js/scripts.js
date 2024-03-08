@@ -45,7 +45,7 @@ while (Aventura == true) {
 
     haceventaterreno();
 
-    alert("Excelente eleccion, el tamaño total es de " + TamañoTotal + " " + "yo te recomendaria una casa " + RecomendacionCasa + " " +  "para aprovechar bien el espacio...");
+    alert("Excelente eleccion, el tamaño total es de " + TamanoTotal + " " + "yo te recomendaria una casa " + RecomendacionCasa + " " +  "para aprovechar bien el espacio...");
 
     alert("Volviendo al terreno, este mismo tiene un valor de " + ValorTerreno + " " + "en mi opinion, te conviene comprar tanto el terreno como la casa prefabricada, ya que las tenemos en descuento!");
 
@@ -55,17 +55,41 @@ while (Aventura == true) {
 
     if (TipoCasa == 1) {
 
-        ending1();
+        haceventacasa();
 
-        ending1post(NombrePersonaje, TamañoTotal, TipoCasaPrefab, Total, NombrePersona);
+        let Montototal = ValorCasa + ValorTerreno
+    
+        alert("Asi que una casa " + TipoCasaPrefab + " " + "eh? excelente eleccion! esa misma vale " + ValorCasa + ".")
+    
+        alert("Excelente, entonces seria... " + Montototal + ".")
+    
+        alert("Respondes: Genial entonces! ¿Para cuando estaria todo esto?");
+    
+        alert("Para aproximadamente 7 dias habiles desde que abonas");
+    
+        let Pago = prompt("Pago con... \n1. efectivo \n2. debito \n3. credito ");
+    
+        let NumeroCelularTotal = prompt("Excelente eleccion, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los proximos dias habiles me voy a estar comunicando para aclarar los detalles, por favor, dejame tu numero de telefono...");
+    
+        alert("Excelente, entonces tu numero es " + NumeroCelularTotal + " " + "¿cierto? Muy bien, me comunicare contigo en los proximos 7 dias habiles, ¡Que te vaya mas que bien!");
+    
+        alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento, ilusionado de haber logrado tener tu propia casa, te acuestas y terminas el dia.");
+
+        ending1post(NombrePersonaje, TamanoTotal, TipoCasaPrefab, Montototal, NombrePersona);
 
         break;
 
     } else if (TipoCasa == 2) {
 
-        ending2();
+        alert("Genial, por favor anotame tu numero de celular en esta libreta asi me comunico");
 
-        ending2post(NombrePersonaje, TamañoTotal, NombrePersona);
+        let NumeroCelular = prompt ("Agarras la libreta y escribes tu numero de celular...");
+    
+        alert("Excelente, entonces tu numero es " + NumeroCelular + " " + "¿cierto? Muy bien, me comunicare contigo en las proximas 24 horas, ¡Que te vaya mas que bien!");
+    
+        alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento y terminas el dia.");
+    
+        ending2post(NombrePersonaje, TamanoTotal, NombrePersona);
 
         break;
 
@@ -89,15 +113,15 @@ function haceventaterreno() {
 
         if (Terreno == 1) {
             ValorTerreno = 3000;
-            TamañoTotal = "335.00m2";
+            TamanoTotal = "335.00m2";
             RecomendacionCasa = "pequeña con un garage lateral o un muy pequeño patio delantero, despues dediciras cual prefieres";
         } else if (Terreno == 2) {
             ValorTerreno = 4000;
-            TamañoTotal = "340.00m2";
+            TamanoTotal = "340.00m2";
             RecomendacionCasa = "mediana con garage lateral y un pequeño patio delantero";
         } else if (Terreno == 3) {
             ValorTerreno = 9000;
-            TamañoTotal = "510.00m2";
+            TamanoTotal = "510.00m2";
             RecomendacionCasa = "grande con patio delantero y garage lateral";
         }
 }
@@ -121,45 +145,9 @@ function haceventacasa() {
 
 // choclo de funciones de final
 
-function ending1() {
-
-    haceventacasa();
-
-    let Total = ValorCasa + ValorTerreno
-    
-    alert("Asi que una casa " + TipoCasaPrefab + " " + "eh? excelente eleccion! esa misma vale " + ValorCasa + ".")
-
-    alert("Excelente, entonces seria... " + Total + ".")
-
-    alert("Respondes: Genial entonces! ¿Para cuando estaria todo esto?");
-
-    alert("Para aproximadamente 7 dias habiles desde que abonas");
-
-    let ModoPago = prompt("Pago con... \n1. efectivo \n2. debito \n3. credito ");
-
-    let NumeroCelularTotal = prompt("Excelente eleccion, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los proximos dias habiles me voy a estar comunicando para aclarar los detalles, por favor, dejame tu numero de telefono...");
-
-    alert("Excelente, entonces tu numero es " + NumeroCelularTotal + " " + "¿cierto? Muy bien, me comunicare contigo en los proximos 7 dias habiles, ¡Que te vaya mas que bien!");
-
-    alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento, ilusionado de haber logrado tener tu propia casa, te acuestas y terminas el dia.");
-
-}
-function ending2() {
-    
-    alert("Genial, por favor anotame tu numero de celular en esta libreta asi me comunico");
-
-    let NumeroCelular = prompt ("Agarras la libreta y escribes tu numero de celular...");
-
-    alert("Excelente, entonces tu numero es " + NumeroCelular + " " + "¿cierto? Muy bien, me comunicare contigo en las proximas 24 horas, ¡Que te vaya mas que bien!");
-
-    alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento y terminas el dia.");
-
-
-}
-
 function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona) {
 
-    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.")
+    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.")
 
     alert("¡Muchisimas gracias por jugar mi aventura! " + persona + " " + "Se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
 
@@ -167,7 +155,7 @@ function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona
 
 function ending2post(personaje, tamanoterreno, persona) {
 
-    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + "compro un terreno de tamaño " + tamanoterreno + " " + "sin embargo, decidio no comprar una casa prefabricada, sino que armar la suya propia.")
+    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "sin embargo, decidio no comprar una casa prefabricada, sino que armar la suya propia.")
     
     alert("¡Muchisimas gracias por jugar mi aventura! " + persona + " " + "Se vienen expansiones a la historia, con multiples finales y mayor interactividad!")
 

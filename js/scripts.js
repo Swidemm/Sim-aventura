@@ -101,6 +101,7 @@ while (Aventura == true) {
 function saludajugador(persona, personaje) {
 
     alert("¡Bienvenido seas a mi aventura " + persona + " " + "espero que disfrutes esta pequeña experiencia! Veo que tu personaje se llama " + personaje + " " + "este mismo nombre sera utilizado a lo largo de nuestra aventura!")
+    
     alert("¿Preparado? ¡Comencemos! (recuerda que debes responder con el numero de la opcion correspondiente.)")
 
 }
@@ -140,7 +141,6 @@ function haceventacasa() {
             ValorCasa = 7200;
             TipoCasaPrefab = "basica"
         }
-
 }
 
 // Funciones de final

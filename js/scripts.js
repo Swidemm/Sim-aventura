@@ -12,6 +12,8 @@ while (true) {
     }
 }
 
+// no se si lo de arriba es lo mejor para arrancar el juego, pero funciona, asi que no voy a hacer mas preguntas
+
 while (Aventura === true) {
 
     let NombrePersona;
@@ -56,7 +58,7 @@ while (Aventura === true) {
 
     haceventaterreno();
 
-    console.log("tamaño de terreno seleccionado: " + TamanoTotal + ", " + "de valor" + ValorTerreno); 
+    console.log("tamaño de terreno seleccionado: " + TamanoTotal + ", " + "de valor " + ValorTerreno); 
     // existe para debuggear
 
     alert("Excelente eleccion, el tamaño total es de " + TamanoTotal + " " + "yo te recomendaria una casa " + RecomendacionCasa + " " +  "para aprovechar bien el espacio...");
@@ -77,7 +79,7 @@ while (Aventura === true) {
         
         haceventacasa();
 
-        console.log("Tipo de casa seleccionada: " + TipoCasaPrefab + " " + "de valor " + ValorCasa); 
+        console.log("Tipo de casa seleccionada: " + TipoCasaPrefab + ", " + "de valor " + ValorCasa); 
         // existe para debuggear
 
         let Montototal = ValorCasa + ValorTerreno;
@@ -112,7 +114,7 @@ while (Aventura === true) {
 
         do {
             NumeroCelularTotal = prompt("Excelente elección, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los próximos días hábiles me voy a estar comunicando para aclarar los detalles. Por favor, déjame tu número de teléfono:");
-        } while (!NumeroCelularTotal || !/^\d+$/.test(NumeroCelularTotal) || NumeroCelularTotal.length < 4);
+        } while (isNaN(NumeroCelularTotal) || NumeroCelularTotal.length < 4);
         
         console.log("Numero de celular ingresado:" + " " + NumeroCelularTotal); 
         // existe para debuggear
@@ -133,7 +135,7 @@ while (Aventura === true) {
 
         do {
             NumeroCelular = prompt("Agarras la libreta y escribes tu numero de celular...");
-        } while (!NumeroCelular || !/^\d+$/.test(NumeroCelular) || NumeroCelular.length < 4);
+        } while (isNaN(NumeroCelular) || NumeroCelular.length < 4);
 
         console.log("Numero de celular ingresado:" + " " + NumeroCelular); 
         // existe para debuggear
@@ -141,6 +143,15 @@ while (Aventura === true) {
         alert("Excelente, entonces tu numero es " + NumeroCelular + " " + "¿cierto? Muy bien, me comunicare contigo en las proximas 24 horas, ¡Que te vaya mas que bien!");
     
         alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento y terminas el dia.");
+
+        alert("... Pasan las horas, duermes placidamente, hasta que el fuerte sonido de tu telefono te despierta, te estan llamando...")
+
+        alert("*atiendes* ¿Hola? Quien habla?")
+
+        alert(NombrePersonaje + " " + "soy yo! Ezequiel, te llamaba para ya ponernos en marcha con ciertos datos para la casa, ¿te parece?")
+
+
+        crearcasa()
     
         ending2post(NombrePersonaje, TamanoTotal, NombrePersona);
 
@@ -213,14 +224,79 @@ function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona
 
     alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.");
 
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + "," + " " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
 }
 
 function ending2post(personaje, tamanoterreno, persona) {
 
     alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "sin embargo, decidio no comprar una casa prefabricada, sino que armar la suya propia.");
     
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + "," + " " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
+}
+// Milton te aviso que las funciones de ending se llevaron parte de mi sanidad mental, no se por QUE no funcionaban, ahora funcionan, no las toco mas
+
+// Funciones creadas con el motivo de continuar el final 2
+function crearcasa() {
+    class CasaPersonalizada {
+        constructor(material, tamano, color) {
+            this.material = material;
+            this.tamano = tamano;
+            this.color = color;
+        }
+    }
+
+    const MaterialCasa = prompt("Genial entonces, comencemos con el tipo de material principal de la casa\n1. Ladrillo \n2. Placa de yeso \n3. Concreto")
+
+    while (MaterialCasa !== "1" && MaterialCasa !== "2" && MaterialCasa !== "3") {
+        // Muestra las opciones nuevamente
+        MaterialCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Ladrillo \n2. Placa de yeso \n3. Concreto");
+    }
+
+    if (MaterialCasa === "1") {
+        ValorMat = 15000;
+        TipoMaterial = "ladrillo";
+    } else if (MaterialCasa === "2") {
+        ValorMat = 11000;
+        TipoMaterial = "placa de Yeso";
+    } else if (MaterialCasa === "3") {
+        ValorMat = 25000;
+        TipoMaterial = "concreto";
+    }
+
+    const TamanoCasa = prompt("Muy bien, continuemos con el tamaño de la casa, por ahora vamos a hacer algo mas ambiguo, luego veremos bien las medidas\n1. Pequeña \n2. Mediana \n3. Grande")
+ 
+    while (TamanoCasa !== "1" && TamanoCasa !== "2" && TamanoCasa !== "3") {
+        // Muestra las opciones nuevamente
+        TamanoCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Pequeña \n2. Mediana \n3. Grande");
+    }
+
+    if (TamanoCasa === "1") {
+        ValorTam = 15000;
+        TipoTam = "pequeña";
+    } else if (TamanoCasa === "2") {
+        ValorTam = 11000;
+        TipoTam = "mediana";
+    } else if (TamanoCasa === "3") {
+        ValorTam = 25000;
+        TipoTam = "grande";
+    }
+
+    const ColorCasa = prompt("y por ultimo, dime el color principal de la casa, mas adelante podremos hacer varios colores si asi lo deseas")
+
+    const CasaPersonalizada1 = new CasaPersonalizada(TipoMaterial, TipoTam, ColorCasa)
+
+    console.log(CasaPersonalizada1)
+    // debugging
+
+    let preciototal= ValorTam + ValorMat
+
+    pasolimpio(TipoMaterial, TipoTam, ColorCasa, preciototal)
 }
 
-// Milton te aviso que las funciones de ending se llevaron parte de mi sanidad mental
+function pasolimpio(mat, tam, col, pre) {
+    alert("Muy bien... entonces, pasemos en limpio. El material principal de la casa va a ser " + mat + ", de tamaño " + tam + ", y el color que elegiste es " + col + ", me gusta! El valor total de la misma es: " + pre + " " + "Ya mismo me pongo a hacer los planos y me comunico nuevamente para terminar detalles, ¡Nos vemos!")
+}
+
+
+
+// Zona de tips, si queres dejarme algun tip, ponelo abajo de esto jeje

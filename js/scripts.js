@@ -1,44 +1,40 @@
 while (true) {
-
     let Confirmacion = prompt("Bienvenido, deseas jugar?  \n1. Si \n2. No");
-
     if (Confirmacion == 1) {
-
         Aventura = true;
         break;
-
     } else if (Confirmacion == 2) {
-
         alert("Que lastima...")
         Aventura = false;
-
         break;
-
     } else {
-
         alert("Por favor, seleccione una opcion correspondiente")
-
     }
 }
 
-while (Aventura == true) {
+while (Aventura === true) {
 
     let NombrePersona;
 
     do {
         NombrePersona = prompt("Por favor, primero indícame tu nombre...");
-    } while (!NombrePersona || NombrePersona.length < 3);
+        // !/^[a-zA-Z]+$/.test() es un codigo para que el usuario solamente pueda ingresar un nombre valido, sin letras.
+    } while (!NombrePersona || !/^[a-zA-Z]+$/.test(NombrePersona) || NombrePersona.length < 3);
+    // Codigo para que el nombre ingresado siempre tenga la primer letra mayuscula y lo demas minuscula
+    NombrePersona = NombrePersona.charAt(0).toUpperCase() + NombrePersona.slice(1).toLowerCase();
 
-    console.log("nombre de ingresado: " + NombrePersona)
+    console.log("Nombre ingresado: " + NombrePersona);
 
     let NombrePersonaje;
 
     do {
         NombrePersonaje = prompt("Genial, ahora por favor, indícame el nombre por el cual te gustaría llamarte en el juego...");
-    } while (!NombrePersonaje || NombrePersonaje.length < 4);
-
-    console.log("nombre de personaje ingresado: " + NombrePersonaje)
-
+        // !/^[a-zA-Z]+$/.test() es un codigo para que el usuario solamente pueda ingresar un nombre valido, sin letras.
+    } while (!NombrePersonaje || !/^[a-zA-Z]+$/.test(NombrePersonaje) || NombrePersonaje.length < 4);
+    // Codigo para que el nombre ingresado siempre tenga la primer letra mayuscula y lo demas minuscula
+    NombrePersonaje = NombrePersonaje.charAt(0).toUpperCase() + NombrePersonaje.slice(1).toLowerCase();
+    
+    console.log("Nombre del personaje ingresado: " + NombrePersonaje);
     
     saludajugador(NombrePersona, NombrePersonaje);
 
@@ -66,9 +62,16 @@ while (Aventura == true) {
 
     let TipoCasa = prompt("Me gustaria... \n1. Una casa prefabricada \n2. Que te comuniques conmigo para hacer una a medida");
 
-    if (TipoCasa == 1) {
+    if (TipoCasa === 1) {
+        
+        do {
+            TipoCasa = prompt("Me gustaría... \n1. Una casa prefabricada \n2. Que te comuniques conmigo para hacer una a medida");
+          
+            if (TipoCasa !== "1" && TipoCasa !== "2") {
+                alert("Por favor, seleccione una opción válida. (1 o 2)");
+            }
 
-        haceventacasa();
+        } while (TipoCasa !== "1" && TipoCasa !== "2");
 
         console.log("Tipo de casa seleccionada: " + TipoCasaPrefab + " " + "de valor " + ValorCasa)
 
@@ -104,8 +107,8 @@ while (Aventura == true) {
 
         do {
             NumeroCelularTotal = prompt("Excelente elección, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los próximos días hábiles me voy a estar comunicando para aclarar los detalles. Por favor, déjame tu número de teléfono:");
-        } while (!NumeroCelularTotal || NumeroCelularTotal.length < 4);
-
+        } while (!NumeroCelularTotal || !/^\d+$/.test(NumeroCelularTotal) || NumeroCelularTotal.length < 4);
+        
         console.log("Numero de celular ingresado:" + " " + NumeroCelularTotal)
     
         alert("Excelente, entonces tu numero es " + NumeroCelularTotal + " " + "¿cierto? Muy bien, me comunicare contigo en los proximos 7 dias habiles, ¡Que te vaya mas que bien!");
@@ -116,7 +119,7 @@ while (Aventura == true) {
 
         break;
 
-    } else if (TipoCasa == 2) {
+    } else if (TipoCasa === 2) {
 
         alert("Genial, por favor anotame tu numero de celular en esta libreta asi me comunico");
 
@@ -171,7 +174,7 @@ function haceventaterreno() {
 function haceventacasa() {
     let CasaPrefab = prompt("Genial, por favor, selecciona cual deseas (1, 2 o 3) \n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
 
-    // Control de errores para asegurarse de que el usuario ingrese una opción válida
+    // control de errores para que el usuario elija la opcion correcta
     while (CasaPrefab !== "1" && CasaPrefab !== "2" && CasaPrefab !== "3") {
         CasaPrefab = prompt("Por favor, selecciona una opción válida (1, 2 o 3)");
     }

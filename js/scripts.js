@@ -23,9 +23,22 @@ while (true) {
 
 while (Aventura == true) {
 
-    let NombrePersona = prompt( "Por favor, primero indicame tu nombre...")
+    let NombrePersona;
 
-    let NombrePersonaje = prompt("Genial, ahora por favor, indicame el nombre por el cual te gustaria llamarte en el juego...")
+    do {
+        NombrePersona = prompt("Por favor, primero indícame tu nombre...");
+    } while (!NombrePersona || NombrePersona.length < 3);
+
+    console.log("nombre de ingresado: " + NombrePersona)
+
+    let NombrePersonaje;
+
+    do {
+        NombrePersonaje = prompt("Genial, ahora por favor, indícame el nombre por el cual te gustaría llamarte en el juego...");
+    } while (!NombrePersonaje || NombrePersonaje.length < 4);
+
+    console.log("nombre de personaje ingresado: " + NombrePersonaje)
+
     
     saludajugador(NombrePersona, NombrePersonaje);
 
@@ -57,6 +70,8 @@ while (Aventura == true) {
 
         haceventacasa();
 
+        console.log("Tipo de casa seleccionada: " + TipoCasaPrefab + " " + "de valor " + ValorCasa)
+
         let Montototal = ValorCasa + ValorTerreno
     
         alert("Asi que una casa " + TipoCasaPrefab + " " + "eh? excelente eleccion! esa misma vale " + ValorCasa + ".")
@@ -66,10 +81,32 @@ while (Aventura == true) {
         alert("Respondes: Genial entonces! ¿Para cuando estaria todo esto?");
     
         alert("Para aproximadamente 7 dias habiles desde que abonas");
+
+        let Pago;
+
+        do {
+            Pago = prompt("Pago con... \n1. efectivo \n2. débito \n3. crédito");
+        } while (Pago !== "1" && Pago !== "2" && Pago !== "3");
+        
+        switch (Pago) {
+            case "1":
+                console.log("Pago en efectivo");
+                break;
+            case "2":
+                console.log("Pago con débito");
+                break;
+            case "3":
+                console.log("Pago con crédito");
+                break;
+        }
     
-        let Pago = prompt("Pago con... \n1. efectivo \n2. debito \n3. credito ");
-    
-        let NumeroCelularTotal = prompt("Excelente eleccion, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los proximos dias habiles me voy a estar comunicando para aclarar los detalles, por favor, dejame tu numero de telefono...");
+        let NumeroCelularTotal;
+
+        do {
+            NumeroCelularTotal = prompt("Excelente elección, ya mismo te cobro... ¡y listo! Ya es todo tuyo, en los próximos días hábiles me voy a estar comunicando para aclarar los detalles. Por favor, déjame tu número de teléfono:");
+        } while (!NumeroCelularTotal || NumeroCelularTotal.length < 4);
+
+        console.log("Numero de celular ingresado:" + " " + NumeroCelularTotal)
     
         alert("Excelente, entonces tu numero es " + NumeroCelularTotal + " " + "¿cierto? Muy bien, me comunicare contigo en los proximos 7 dias habiles, ¡Que te vaya mas que bien!");
     
@@ -109,38 +146,46 @@ function saludajugador(persona, personaje) {
 // funciones de venta
 
 function haceventaterreno() {
-
     let Terreno = prompt ("Por favor, selecciona cual deseas (1, 2 o 3)\n1. Terreno de 9.14m x 28m \n2. Terreno de 12m x 28m \n3. Terreno de 12m x 42.50m");
 
-        if (Terreno == 1) {
-            ValorTerreno = 3000;
-            TamanoTotal = "335.00m2";
-            RecomendacionCasa = "pequeña con un garage lateral o un muy pequeño patio delantero, despues dediciras cual prefieres";
-        } else if (Terreno == 2) {
-            ValorTerreno = 4000;
-            TamanoTotal = "340.00m2";
-            RecomendacionCasa = "mediana con garage lateral y un pequeño patio delantero";
-        } else if (Terreno == 3) {
-            ValorTerreno = 9000;
-            TamanoTotal = "510.00m2";
-            RecomendacionCasa = "grande con patio delantero y garage lateral";
-        }
+    // control de errores para que el usuario elija la opcion correcta
+    while (Terreno !== "1" && Terreno !== "2" && Terreno !== "3") {
+        Terreno = prompt("Por favor, selecciona una opción válida (1, 2 o 3)");
+    }
+
+    if (Terreno === "1") {
+        ValorTerreno = 3000;
+        TamanoTotal = "335.00m2";
+        RecomendacionCasa = "pequeña con un garage lateral o un muy pequeño patio delantero, después decidirás cuál prefieres";
+    } else if (Terreno === "2") {
+        ValorTerreno = 4000;
+        TamanoTotal = "340.00m2";
+        RecomendacionCasa = "mediana con garage lateral y un pequeño patio delantero";
+    } else if (Terreno === "3") {
+        ValorTerreno = 9000;
+        TamanoTotal = "510.00m2";
+        RecomendacionCasa = "grande con patio delantero y garage lateral";
+    }
 }
 
 function haceventacasa() {
+    let CasaPrefab = prompt("Genial, por favor, selecciona cual deseas (1, 2 o 3) \n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
 
-    let CasaPrefab = prompt("Genial, por favor, selecciona cual deseas (1, 2 o 3) \n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada basica")
+    // Control de errores para asegurarse de que el usuario ingrese una opción válida
+    while (CasaPrefab !== "1" && CasaPrefab !== "2" && CasaPrefab !== "3") {
+        CasaPrefab = prompt("Por favor, selecciona una opción válida (1, 2 o 3)");
+    }
 
-        if (CasaPrefab == 1) {
-            ValorCasa = 12000;
-            TipoCasaPrefab = "de lujo"
-        } else if (CasaPrefab == 2) {
-            ValorCasa = 9500;
-            TipoCasaPrefab = "clase media"
-        } else if (CasaPrefab == 3) {
-            ValorCasa = 7200;
-            TipoCasaPrefab = "basica"
-        }
+    if (CasaPrefab === "1") {
+        ValorCasa = 12000;
+        TipoCasaPrefab = "de lujo";
+    } else if (CasaPrefab === "2") {
+        ValorCasa = 9500;
+        TipoCasaPrefab = "clase media";
+    } else if (CasaPrefab === "3") {
+        ValorCasa = 7200;
+        TipoCasaPrefab = "básica";
+    }
 }
 
 // Funciones de final

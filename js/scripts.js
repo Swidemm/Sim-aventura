@@ -1,3 +1,158 @@
+// Inicio de funciones
+
+// funciones de hola :D
+
+function saludajugador(persona, personaje) {
+
+    alert("¡Bienvenido seas a mi aventura " + persona + " " + "espero que disfrutes esta pequeña experiencia! Veo que tu personaje se llama " + personaje + " " + "este mismo nombre sera utilizado a lo largo de nuestra aventura!");
+    
+    alert("¿Preparado? ¡Comencemos! (recuerda que debes responder con el numero de la opcion correspondiente.)");
+
+}
+
+// funciones de venta
+
+function haceventaterreno() {
+    let Terreno = prompt ("Por favor, selecciona cual deseas (1, 2 o 3)\n1. Terreno de 9.14m x 28m \n2. Terreno de 12m x 28m \n3. Terreno de 12m x 42.50m");
+
+    // control de errores para que el usuario elija la opcion correcta
+    while (Terreno !== "1" && Terreno !== "2" && Terreno !== "3") {
+        // Muestra las opciones nuevamente
+        Terreno = prompt("Por favor, selecciona una opción válida (1, 2 o 3)\n1. Terreno de 9.14m x 28m \n2. Terreno de 12m x 28m \n3. Terreno de 12m x 42.50m");
+    }
+
+    if (Terreno === "1") {
+        ValorTerreno = 3000;
+        TamanoTotal = "335.00m2";
+        RecomendacionCasa = "pequeña con un garage lateral o un muy pequeño patio delantero, después decidirás cuál prefieres";
+    } else if (Terreno === "2") {
+        ValorTerreno = 4000;
+        TamanoTotal = "340.00m2";
+        RecomendacionCasa = "mediana con garage lateral y un pequeño patio delantero";
+    } else if (Terreno === "3") {
+        ValorTerreno = 9000;
+        TamanoTotal = "510.00m2";
+        RecomendacionCasa = "grande con patio delantero y garage lateral";
+    }
+}
+
+
+function haceventacasa() {
+
+    let CasaPrefab = prompt ("Por favor, selecciona cual deseas (1, 2 o 3)\n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
+
+    // control de errores para que el usuario elija la opcion correcta
+    while (CasaPrefab !== "1" && CasaPrefab !== "2" && CasaPrefab !== "3") {
+        // Muestra las opciones nuevamente
+        CasaPrefab = prompt("Por favor, selecciona una opción válida (1, 2 o 3)\n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
+    }
+
+    if (CasaPrefab === "1") {
+        ValorCasa = 12000;
+        TipoCasaPrefab = "de lujo";
+    } else if (CasaPrefab === "2") {
+        ValorCasa = 9500;
+        TipoCasaPrefab = "clase media";
+    } else if (CasaPrefab === "3") {
+        ValorCasa = 7200;
+        TipoCasaPrefab = "básica";
+    }
+}
+
+// Funciones creadas con el motivo de continuar el final 2
+let Preciototal
+let ColorCasa
+let TipoTam
+let MaterialCasa
+// entiendo por que necesito declararlas fuera de la funcion, no entiendo por que en otros casos no necesite hacerlo, en todo caso, funciona, no pregunto ni toco mas
+function crearcasa() {
+    MaterialCasa = prompt("Genial entonces, comencemos con el tipo de material principal de la casa\n1. Ladrillo \n2. Placa de yeso \n3. Concreto")
+
+    while (MaterialCasa !== "1" && MaterialCasa !== "2" && MaterialCasa !== "3") {
+        // Muestra las opciones nuevamente
+        MaterialCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Ladrillo \n2. Placa de yeso \n3. Concreto");
+    }
+
+    if (MaterialCasa === "1") {
+        ValorMat = 15000;
+        TipoMaterial = "ladrillo";
+    } else if (MaterialCasa === "2") {
+        ValorMat = 11000;
+        TipoMaterial = "placa de Yeso";
+    } else if (MaterialCasa === "3") {
+        ValorMat = 25000;
+        TipoMaterial = "concreto";
+    }
+
+    TamanoCasa = prompt("Muy bien, continuemos con el tamaño de la casa, por ahora vamos a hacer algo mas ambiguo, luego veremos bien las medidas\n1. Pequeña \n2. Mediana \n3. Grande")
+ 
+    while (TamanoCasa !== "1" && TamanoCasa !== "2" && TamanoCasa !== "3") {
+        // Muestra las opciones nuevamente
+        TamanoCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Pequeña \n2. Mediana \n3. Grande");
+    }
+
+    if (TamanoCasa === "1") {
+        ValorTam = 15000;
+        TipoTam = "pequeña";
+    } else if (TamanoCasa === "2") {
+        ValorTam = 11000;
+        TipoTam = "mediana";
+    } else if (TamanoCasa === "3") {
+        ValorTam = 25000;
+        TipoTam = "grande";
+    }
+
+    do {
+        ColorCasa = prompt("y por ultimo, dime el color principal de la casa, mas adelante podremos hacer varios colores si asi lo deseas")
+    } while (!ColorCasa || ColorCasa.length < 3)
+
+    Preciototal= ValorTam + ValorMat + ValorTerreno
+
+    console.log("el total es de: " + Preciototal)
+    // debugging
+
+    pasolimpio(TipoMaterial, TipoTam, ColorCasa, Preciototal)
+
+}
+
+function creacasaobj() {
+    class CasaPersonalizada {
+        constructor(material, tamano, color) {
+            this.material = material;
+            this.tamano = tamano;
+            this.color = color;
+        }
+    }
+    const CasaPersonalizada1 = new CasaPersonalizada(TipoMaterial, TipoTam, ColorCasa)
+    console.log(CasaPersonalizada1)
+    // debugging
+}
+
+function pasolimpio(mat, tam, col, pre) {
+    alert("Muy bien... entonces, pasemos en limpio. El material principal de la casa va a ser " + mat + ", de tamaño " + tam + ", y el color que elegiste es " + col + ", me gusta! El valor total de la misma es: " + pre + " " + "Ya mismo me pongo a hacer los planos y me comunico nuevamente para terminar detalles, ¡Nos vemos!")
+}
+
+// Funciones de final
+
+function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona) {
+
+    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.");
+
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
+}
+
+function ending2post(personaje, tamanoterreno, matecasa, tamanocasa, casacolor, gastototal, persona) {
+
+    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + ", " + "en este mismo, decidio hacer una casa personalizada, esta misma es de material " + matecasa + ", " + "de un tamaño " + tamanocasa + ", " + "de color " + casacolor + ", el costo total de todo fue de " + gastototal );
+    
+    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
+}
+// Milton te aviso que las funciones de ending se llevaron parte de mi sanidad mental, no se por QUE no funcionaban, ahora funcionan, no las toco mas
+
+
+// Final de funciones
+// inicio de aventura
+
 while (true) {
     let Confirmacion = prompt("Bienvenido, deseas jugar?  \n1. Si \n2. No");
     if (Confirmacion == 1) {
@@ -150,153 +305,15 @@ while (Aventura === true) {
 
         alert(NombrePersonaje + " " + "soy yo! Ezequiel, te llamaba para ya ponernos en marcha con ciertos datos para la casa, ¿te parece?")
 
-
         crearcasa()
-    
-        ending2post(NombrePersonaje, TamanoTotal, NombrePersona);
+
+        let PrecioAbsoluto = Preciototal + ValorTerreno
+        
+        console.log("el absoluto es de: " + PrecioAbsoluto)
+
+        ending2post(NombrePersonaje, TamanoTotal, TipoMaterial, TipoTam, ColorCasa, PrecioAbsoluto, NombrePersona);
 
         break;
-
     }
 }
-// funciones de hola :D
-
-function saludajugador(persona, personaje) {
-
-    alert("¡Bienvenido seas a mi aventura " + persona + " " + "espero que disfrutes esta pequeña experiencia! Veo que tu personaje se llama " + personaje + " " + "este mismo nombre sera utilizado a lo largo de nuestra aventura!");
-    
-    alert("¿Preparado? ¡Comencemos! (recuerda que debes responder con el numero de la opcion correspondiente.)");
-
-}
-
-// funciones de venta
-
-function haceventaterreno() {
-    let Terreno = prompt ("Por favor, selecciona cual deseas (1, 2 o 3)\n1. Terreno de 9.14m x 28m \n2. Terreno de 12m x 28m \n3. Terreno de 12m x 42.50m");
-
-    // control de errores para que el usuario elija la opcion correcta
-    while (Terreno !== "1" && Terreno !== "2" && Terreno !== "3") {
-        // Muestra las opciones nuevamente
-        Terreno = prompt("Por favor, selecciona una opción válida (1, 2 o 3)\n1. Terreno de 9.14m x 28m \n2. Terreno de 12m x 28m \n3. Terreno de 12m x 42.50m");
-    }
-
-    if (Terreno === "1") {
-        ValorTerreno = 3000;
-        TamanoTotal = "335.00m2";
-        RecomendacionCasa = "pequeña con un garage lateral o un muy pequeño patio delantero, después decidirás cuál prefieres";
-    } else if (Terreno === "2") {
-        ValorTerreno = 4000;
-        TamanoTotal = "340.00m2";
-        RecomendacionCasa = "mediana con garage lateral y un pequeño patio delantero";
-    } else if (Terreno === "3") {
-        ValorTerreno = 9000;
-        TamanoTotal = "510.00m2";
-        RecomendacionCasa = "grande con patio delantero y garage lateral";
-    }
-}
-
-
-function haceventacasa() {
-
-    let CasaPrefab = prompt ("Por favor, selecciona cual deseas (1, 2 o 3)\n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
-
-    // control de errores para que el usuario elija la opcion correcta
-    while (CasaPrefab !== "1" && CasaPrefab !== "2" && CasaPrefab !== "3") {
-        // Muestra las opciones nuevamente
-        CasaPrefab = prompt("Por favor, selecciona una opción válida (1, 2 o 3)\n1. Prefabricada de lujo \n2. Prefabricada clase media \n3. Prefabricada básica");
-    }
-
-    if (CasaPrefab === "1") {
-        ValorCasa = 12000;
-        TipoCasaPrefab = "de lujo";
-    } else if (CasaPrefab === "2") {
-        ValorCasa = 9500;
-        TipoCasaPrefab = "clase media";
-    } else if (CasaPrefab === "3") {
-        ValorCasa = 7200;
-        TipoCasaPrefab = "básica";
-    }
-}
-
-// Funciones de final
-
-function ending1post(personaje, tamanoterreno, tipoprefab, totalgastado, persona) {
-
-    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "en este mismo, coloco una casa prefabricada " + tipoprefab + " " + "gastando un total de: " + totalgastado + " " + "¡Felicidades! Tienes tu casa de ensueño.");
-
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
-}
-
-function ending2post(personaje, tamanoterreno, persona) {
-
-    alert("¡Llegaste al final! ahora, veamos un poco de estadisticas: " + "Tu personaje " + personaje + " " + "compro un terreno de tamaño " + tamanoterreno + " " + "sin embargo, decidio no comprar una casa prefabricada, sino que armar la suya propia.");
-    
-    alert("¡Muchisimas gracias por jugar mi aventura! " + persona + ", " + "se vienen expansiones a la historia, con multiples finales y mayor interactividad!");
-}
-// Milton te aviso que las funciones de ending se llevaron parte de mi sanidad mental, no se por QUE no funcionaban, ahora funcionan, no las toco mas
-
-// Funciones creadas con el motivo de continuar el final 2
-function crearcasa() {
-    class CasaPersonalizada {
-        constructor(material, tamano, color) {
-            this.material = material;
-            this.tamano = tamano;
-            this.color = color;
-        }
-    }
-
-    const MaterialCasa = prompt("Genial entonces, comencemos con el tipo de material principal de la casa\n1. Ladrillo \n2. Placa de yeso \n3. Concreto")
-
-    while (MaterialCasa !== "1" && MaterialCasa !== "2" && MaterialCasa !== "3") {
-        // Muestra las opciones nuevamente
-        MaterialCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Ladrillo \n2. Placa de yeso \n3. Concreto");
-    }
-
-    if (MaterialCasa === "1") {
-        ValorMat = 15000;
-        TipoMaterial = "ladrillo";
-    } else if (MaterialCasa === "2") {
-        ValorMat = 11000;
-        TipoMaterial = "placa de Yeso";
-    } else if (MaterialCasa === "3") {
-        ValorMat = 25000;
-        TipoMaterial = "concreto";
-    }
-
-    const TamanoCasa = prompt("Muy bien, continuemos con el tamaño de la casa, por ahora vamos a hacer algo mas ambiguo, luego veremos bien las medidas\n1. Pequeña \n2. Mediana \n3. Grande")
- 
-    while (TamanoCasa !== "1" && TamanoCasa !== "2" && TamanoCasa !== "3") {
-        // Muestra las opciones nuevamente
-        TamanoCasa = prompt("Por favor, selecciona una opción válida (1, 2 o 3) \n1. Pequeña \n2. Mediana \n3. Grande");
-    }
-
-    if (TamanoCasa === "1") {
-        ValorTam = 15000;
-        TipoTam = "pequeña";
-    } else if (TamanoCasa === "2") {
-        ValorTam = 11000;
-        TipoTam = "mediana";
-    } else if (TamanoCasa === "3") {
-        ValorTam = 25000;
-        TipoTam = "grande";
-    }
-
-    const ColorCasa = prompt("y por ultimo, dime el color principal de la casa, mas adelante podremos hacer varios colores si asi lo deseas")
-
-    const CasaPersonalizada1 = new CasaPersonalizada(TipoMaterial, TipoTam, ColorCasa)
-
-    console.log(CasaPersonalizada1)
-    // debugging
-
-    let preciototal= ValorTam + ValorMat
-
-    pasolimpio(TipoMaterial, TipoTam, ColorCasa, preciototal)
-}
-
-function pasolimpio(mat, tam, col, pre) {
-    alert("Muy bien... entonces, pasemos en limpio. El material principal de la casa va a ser " + mat + ", de tamaño " + tam + ", y el color que elegiste es " + col + ", me gusta! El valor total de la misma es: " + pre + " " + "Ya mismo me pongo a hacer los planos y me comunico nuevamente para terminar detalles, ¡Nos vemos!")
-}
-
-
-
 // Zona de tips, si queres dejarme algun tip, ponelo abajo de esto jeje

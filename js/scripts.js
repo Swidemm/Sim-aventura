@@ -1,3 +1,84 @@
+// carrito de compras, recontra WIP, no me pidas mucho mas
+
+// Definición de los productos disponibles con sus nombres y precios, usa arrays (te amo y odio arrays)
+const mueble = [
+    { nombre: "ropero", precio: 14500 },
+    { nombre: "mesa", precio: 16500 },
+    { nombre: "escritorio", precio: 20000 },
+    { nombre: "sillon", precio: 16000 },
+    { nombre: "sillon doble", precio: 25500 },
+    { nombre: "cama simple", precio: 17800 },
+    { nombre: "cama doble", precio: 28480 },
+    { nombre: "estanteria", precio: 21000 }
+];
+
+
+ // inicializacion del carrito de compras vacio
+let carrito = [];
+let total = 0;
+
+// Funcion para mostrar los productos y seleccionarlos (al borde de la embolia con esto)
+function mostrarProductos() {
+
+    // crea la lista de productos, sacandolos del array de arriba
+    let listaProductos = "Productos disponibles:\n";
+    mueble.forEach((producto, index) => {
+        listaProductos += `${index + 1}: ${producto.nombre} - $${producto.precio}\n`;
+    });
+
+    // Bucle para delirar la tarjeta de credito hasta que se aprete cancelar
+    while (true) {
+
+        let seleccion = prompt(listaProductos + "\nIngrese el numero de producto que desea, al contrario, presione cancelar para terminar la venta.");
+
+        // si se cancela, sale del bucle
+        if (seleccion === null) {
+            break;
+        }
+
+        // convierte la eleccion a un indice de producto
+        let productoIndex = parseInt(seleccion) - 1;
+
+        // creo que verifica si el indice esta dentro de los productos disponibles, creo que funciona, no tengo idea la verdad, por las dudas lo dejo
+        if (productoIndex >= 0 && productoIndex < mueble.length) {
+            // obtiene el producto elegido
+            let productoSeleccionado = mueble[productoIndex];
+            // lo agrega al carrito
+            carrito.push(productoSeleccionado);
+            // suma el precio
+            total += productoSeleccionado.precio;
+            // muestra un mensaje de lo que se agrego y el total nuevo
+            alert(`Agregado ${productoSeleccionado.nombre} al carrito. Total: $${total}`);
+        } else {
+            // Si se pone cualquier cosa da este error
+            alert("Por favor, selecciona un producto valido.");
+        }
+    }
+    console.log(carrito)
+    // debugging, porque el carrito me tenia harto de no funcionar
+
+    // una vez terminado todo, se muestra un resumen de la venta
+    mostrarResumen(carrito, total);
+}
+
+// Función para mostrar un resumen de la compra al cliente
+function mostrarResumen(carrito, total) {
+    // Crear una cadena para almacenar el resumen
+    let resumen = "Resumen de la compra:\n\n";
+
+    // Iterar sobre los productos en el carrito
+    carrito.forEach(producto => {
+        // Agregar el nombre y el precio de cada producto al resumen
+        resumen += `${producto.nombre}: $${producto.precio}\n`;
+    });
+
+    // Agregar el total al resumen
+    resumen += `\nTotal: $${total}`;
+
+    // Mostrar el resumen al cliente en un mensaje de alerta
+    alert(resumen);
+}
+
 // Inicio de funciones
 
 // funciones de hola :D
@@ -74,13 +155,13 @@ function crearcasa() {
     }
 
     if (MaterialCasa === "1") {
-        ValorMat = 15000;
+        ValorMat = 19760;
         TipoMaterial = "ladrillo";
     } else if (MaterialCasa === "2") {
-        ValorMat = 11000;
+        ValorMat = 13950;
         TipoMaterial = "placa de Yeso";
     } else if (MaterialCasa === "3") {
-        ValorMat = 25000;
+        ValorMat = 27520;
         TipoMaterial = "concreto";
     }
 
@@ -98,7 +179,7 @@ function crearcasa() {
         ValorTam = 11000;
         TipoTam = "mediana";
     } else if (TamanoCasa === "3") {
-        ValorTam = 25000;
+        ValorTam = 32000;
         TipoTam = "grande";
     }
 
@@ -110,6 +191,7 @@ function crearcasa() {
 
     console.log("el total es de: " + Preciototal)
     // debugging
+    console.log("la casa es de " + TipoMaterial + ", de tamaño " + TipoTam + " " + "y de un valor total de " + Preciototal)
 
     pasolimpio(TipoMaterial, TipoTam, ColorCasa, Preciototal)
 
@@ -129,7 +211,7 @@ function creacasaobj() {
 }
 
 function pasolimpio(mat, tam, col, pre) {
-    alert("Muy bien... entonces, pasemos en limpio. El material principal de la casa va a ser " + mat + ", de tamaño " + tam + ", y el color que elegiste es " + col + ", me gusta! El valor total de la misma es: " + pre + " " + "Ya mismo me pongo a hacer los planos y me comunico nuevamente para terminar detalles, ¡Nos vemos!")
+    alert("Muy bien... entonces, pasemos en limpio. El material principal de la casa va a ser " + mat + ", de tamaño " + tam + ", y el color que elegiste es " + col + ", me gusta! El valor total de la misma es: " + pre + " " + "Ya mismo me pongo a hacer los planos y me comunico nuevamente para terminar detalles, a continuacion, te dejare un pequeño catalogo de muebles, ¡puedes comprar el que quieras y cuantos quieras! obvio, siempre y cuando puedas costearlo ja ja ja.")
 }
 
 // Funciones de final
@@ -213,6 +295,9 @@ while (Aventura === true) {
 
     haceventaterreno();
 
+    console.log("el valor del terreno es: " + ValorTerreno)
+    // debugging, ya estoy cansado jefe
+
     console.log("tamaño de terreno seleccionado: " + TamanoTotal + ", " + "de valor " + ValorTerreno); 
     // existe para debuggear
 
@@ -238,6 +323,7 @@ while (Aventura === true) {
         // existe para debuggear
 
         let Montototal = ValorCasa + ValorTerreno;
+        console.log("El monto total es: " + Montototal)
     
         alert("Asi que una casa " + TipoCasaPrefab + " " + "eh? excelente eleccion! esa misma vale " + ValorCasa + ".");
     
@@ -278,7 +364,45 @@ while (Aventura === true) {
     
         alert("Sales del local, con una sonrisa por la gran atencion y precios, luego de unas cuadras, llegas a tu departamento, ilusionado de haber logrado tener tu propia casa, te acuestas y terminas el dia.");
 
-        ending1post(NombrePersonaje, TamanoTotal, TipoCasaPrefab, Montototal, NombrePersona);
+        alert("... Pasan las horas, duermes placidamente, hasta que el fuerte sonido de tu telefono te despierta, te estan llamando...")
+
+        alert("*atiendes* ¿Hola? Quien habla?")
+
+        alert(NombrePersonaje + " " + "soy yo! Ezequiel, te llamaba para ofrecerte muebles para tu casa! que te parece?")
+
+        alert("Respondes: Muy bien, los voy a necesitar, veamos que tenes...")
+
+        alert("Genial " + NombrePersonaje + "! " + "Ya mismo me dirijo para tu departamento y lo vemos...")
+
+        alert("*pasa media hora, suena el timbre, abres y te encuentras con Ezequiel.*")
+
+        alert("¡" + NombrePersonaje + "! " + "que bueno verte, te doy el catalogo, por favor, miralo tranquilo y elegi lo que mas te guste!")
+
+        mostrarProductos()
+
+        alert("Es-pec-ta-cu-lar, ahora, ¿como pagaras todo esto?")
+
+        do {
+            Pago = prompt("Pago con... \n1. efectivo \n2. débito \n3. crédito");
+        } while (Pago !== "1" && Pago !== "2" && Pago !== "3");
+        
+        switch (Pago) {
+            case "1":
+                console.log("Pago en efectivo");
+                break;
+            case "2":
+                console.log("Pago con débito");
+                break;
+            case "3":
+                console.log("Pago con crédito");
+                break;
+        }
+
+        alert("Muy bien! ya mismo te cobro... y estamos! ya te cobre dos veces eh? que vendedor ja ja ja, muy bien " + NombrePersonaje + " " + "nos estamos viendo, te comunicare cuando ya la casa este colocada y amueblada, un saludo!")
+
+        let PrecioAbsoluto =  Montototal + total
+
+        ending1post(NombrePersonaje, TamanoTotal, TipoCasaPrefab, PrecioAbsoluto, NombrePersona);
 
         break;
 
@@ -307,7 +431,28 @@ while (Aventura === true) {
 
         crearcasa()
 
-        let PrecioAbsoluto = Preciototal + ValorTerreno
+        mostrarProductos()
+
+        alert("Es-pec-ta-cu-lar, ahora, ¿como pagaras todo esto?")
+
+        do {
+            Pago = prompt("Pago con... \n1. efectivo \n2. débito \n3. crédito");
+        } while (Pago !== "1" && Pago !== "2" && Pago !== "3");
+        
+        switch (Pago) {
+            case "1":
+                console.log("Pago en efectivo");
+                break;
+            case "2":
+                console.log("Pago con débito");
+                break;
+            case "3":
+                console.log("Pago con crédito");
+                break;
+        }
+    
+
+        let PrecioAbsoluto = Preciototal + ValorTerreno + total
         
         console.log("el absoluto es de: " + PrecioAbsoluto)
 
